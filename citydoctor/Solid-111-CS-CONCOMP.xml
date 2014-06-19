@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CityModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.opengis.net/citygml/2.0"
+	xmlns:gml="http://www.opengis.net/gml"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:bldg="http://www.opengis.net/citygml/building/2.0"
+	xmlns:xAL="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"
+	xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance http://schemas.opengis.net/citygml/profiles/base/2.0/CityGML.xsd
+						  http://www.opengis.net/citygml/building/2.0 http://schemas.opengis.net/citygml/building/2.0/building.xsd ">
+  <!-- 
+       Wagner, 19.06.2012
+       2 simple buildings with saddle roof which are unconnected components of one <bldg:Building>
+       modeled as two lod2Solids
+	   should be detected by CS-CONCOMP
+	   Local coordinates
+  -->
+
+	<cityObjectMember>
+		<bldg:Building gml:id="Test-111-CS-CONCOMP">
+			<bldg:boundedBy>
+				<bldg:RoofSurface>
+					<bldg:lod2MultiSurface>
+						<gml:MultiSurface>
+							<gml:surfaceMember xlink:href="#p_r_11">
+							</gml:surfaceMember>
+						</gml:MultiSurface>
+					</bldg:lod2MultiSurface>
+				</bldg:RoofSurface>
+			</bldg:boundedBy>
+			<bldg:boundedBy>
+				<bldg:RoofSurface>
+					<bldg:lod2MultiSurface>
+						<gml:MultiSurface>
+							<gml:surfaceMember xlink:href="#p_r_12">
+							</gml:surfaceMember>
+						</gml:MultiSurface>
+					</bldg:lod2MultiSurface>
+				</bldg:RoofSurface>
+			</bldg:boundedBy>
+
+			<bldg:boundedBy>
+				<bldg:WallSurface>
+					<bldg:lod2MultiSurface>
+						<gml:MultiSurface>
+							<gml:surfaceMember xlink:href="#p_w_11">
+							</gml:surfaceMember>
+						</gml:MultiSurface>
+					</bldg:lod2MultiSurface>
+				</bldg:WallSurface>
+			</bldg:boundedBy>
+			<bldg:boundedBy>
+				<bldg:WallSurface>
+					<bldg:lod2MultiSurface>
+						<gml:MultiSurface>
+							<gml:surfaceMember xlink:href="#p_w_12">
+							</gml:surfaceMember>
+						</gml:MultiSurface>
+					</bldg:lod2MultiSurface>
+				</bldg:WallSurface>
+			</bldg:boundedBy>
+			<bldg:boundedBy>
+				<bldg:WallSurface>
+					<bldg:lod2MultiSurface>
+						<gml:MultiSurface>
+							<gml:surfaceMember xlink:href="#p_w_13">
+							</gml:surfaceMember>
+						</gml:MultiSurface>
+					</bldg:lod2MultiSurface>
+				</bldg:WallSurface>
+			</bldg:boundedBy>
+			<bldg:boundedBy>
+				<bldg:WallSurface>
+					<bldg:lod2MultiSurface>
+						<gml:MultiSurface>
+							<gml:surfaceMember xlink:href="#p_w_14">
+							</gml:surfaceMember>
+							<gml:surfaceMember xlink:href="#p_w_15">
+							</gml:surfaceMember>
+						</gml:MultiSurface>
+					</bldg:lod2MultiSurface>
+				</bldg:WallSurface>
+			</bldg:boundedBy>
+
+			<bldg:boundedBy>
+				<bldg:GroundSurface>
+					<bldg:lod2MultiSurface>
+						<gml:MultiSurface>
+							<gml:surfaceMember xlink:href="#p_g_11">
+							</gml:surfaceMember>
+						</gml:MultiSurface>
+					</bldg:lod2MultiSurface>
+				</bldg:GroundSurface>
+			</bldg:boundedBy>
+
+			<bldg:boundedBy>
+				<bldg:RoofSurface>
+					<bldg:lod2MultiSurface>
+						<gml:MultiSurface>
+							<gml:surfaceMember xlink:href="#p_r_21">
+							</gml:surfaceMember>
+						</gml:MultiSurface>
+					</bldg:lod2MultiSurface>
+				</bldg:RoofSurface>
+			</bldg:boundedBy>
+			<bldg:boundedBy>
+				<bldg:RoofSurface>
+					<bldg:lod2MultiSurface>
+						<gml:MultiSurface>
+							<gml:surfaceMember xlink:href="#p_r_22">
+							</gml:surfaceMember>
+						</gml:MultiSurface>
+					</bldg:lod2MultiSurface>
+				</bldg:RoofSurface>
+			</bldg:boundedBy>
+
+			<bldg:boundedBy>
+				<bldg:WallSurface>
+					<bldg:lod2MultiSurface>
+						<gml:MultiSurface>
+							<gml:surfaceMember xlink:href="#p_w_21">
+							</gml:surfaceMember>
+						</gml:MultiSurface>
+					</bldg:lod2MultiSurface>
+				</bldg:WallSurface>
+			</bldg:boundedBy>
+			<bldg:boundedBy>
+				<bldg:WallSurface>
+					<bldg:lod2MultiSurface>
+						<gml:MultiSurface>
+							<gml:surfaceMember xlink:href="#p_w_22">
+							</gml:surfaceMember>
+						</gml:MultiSurface>
+					</bldg:lod2MultiSurface>
+				</bldg:WallSurface>
+			</bldg:boundedBy>
+			<bldg:boundedBy>
+				<bldg:WallSurface>
+					<bldg:lod2MultiSurface>
+						<gml:MultiSurface>
+							<gml:surfaceMember xlink:href="#p_w_23">
+							</gml:surfaceMember>
+						</gml:MultiSurface>
+					</bldg:lod2MultiSurface>
+				</bldg:WallSurface>
+			</bldg:boundedBy>
+			<bldg:boundedBy>
+				<bldg:WallSurface>
+					<bldg:lod2MultiSurface>
+						<gml:MultiSurface>
+							<gml:surfaceMember xlink:href="#p_w_24">
+							</gml:surfaceMember>
+							<gml:surfaceMember xlink:href="#p_w_25">
+							</gml:surfaceMember>
+						</gml:MultiSurface>
+					</bldg:lod2MultiSurface>
+				</bldg:WallSurface>
+			</bldg:boundedBy>
+
+			<bldg:boundedBy>
+				<bldg:GroundSurface>
+					<bldg:lod2MultiSurface>
+						<gml:MultiSurface>
+							<gml:surfaceMember xlink:href="#p_g_21">
+							</gml:surfaceMember>
+						</gml:MultiSurface>
+					</bldg:lod2MultiSurface>
+				</bldg:GroundSurface>
+			</bldg:boundedBy>
+
+
+			<bldg:lod2Solid>
+				<gml:Solid>
+					<gml:exterior>
+						<gml:CompositeSurface>
+            <gml:surfaceMember>
+                <gml:Polygon gml:id="p_w_11">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+								0.00 0.00 0.00
+                                2.00 0.00 0.00
+                                2.00 0.00 3.00
+								1.00 0.00 3.50
+                                0.00 0.00 3.00
+                                0.00 0.00 0.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>
+          <gml:surfaceMember>
+                <gml:Polygon gml:id="p_w_12">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+                                2.00 0.00 0.00
+                                2.00 2.00 0.00
+                                2.00 2.00 3.00
+                                2.00 0.00 3.00
+                                2.00 0.00 0.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>        
+          <gml:surfaceMember>
+                <gml:Polygon gml:id="p_w_13">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+                                2.00 2.00 0.00
+                                0.00 2.00 0.00
+                                0.00 2.00 3.00
+								1.00 2.00 3.50
+                                2.00 2.00 3.00
+                                2.00 2.00 0.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>        
+          <gml:surfaceMember>
+                <gml:Polygon gml:id="p_w_14">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+                                0.00 2.00 0.00
+                                0.00 0.00 0.00
+                                0.00 0.00 3.00
+                                0.00 2.00 0.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>        
+          <gml:surfaceMember>
+                <gml:Polygon gml:id="p_w_15">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+                                0.00 2.00 0.00
+                                0.00 0.00 3.00
+                                0.00 2.00 3.00
+                                0.00 2.00 0.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>
+          <gml:surfaceMember>
+                <gml:Polygon gml:id="p_g_11">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+                                0.00 0.00 0.00
+                                0.00 2.00 0.00
+                                2.00 2.00 0.00
+                                2.00 0.00 0.00
+                                0.00 0.00 0.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>        
+          <gml:surfaceMember>
+                <gml:Polygon gml:id="p_r_11">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+                                0.00 0.00 3.00
+                                1.00 0.00 3.50
+								1.00 2.00 3.50
+								0.00 2.00 3.00
+                                0.00 0.00 3.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>        
+          <gml:surfaceMember>
+                <gml:Polygon gml:id="p_r_12">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+                                2.00 0.00 3.00
+                                2.00 2.00 3.00
+								1.00 2.00 3.50
+								1.00 0.00 3.50
+                                2.00 0.00 3.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>
+          		</gml:CompositeSurface>
+</gml:exterior>
+				</gml:Solid>
+			</bldg:lod2Solid>        
+
+<!-- second component -->
+			<bldg:lod2Solid>
+				<gml:Solid>
+					<gml:exterior>
+						<gml:CompositeSurface>
+            <gml:surfaceMember>
+                <gml:Polygon gml:id="p_w_21">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+								3.00 0.00 0.00
+                                5.00 0.00 0.00
+                                5.00 0.00 3.00
+								4.00 0.00 3.50
+                                3.00 0.00 3.00
+                                3.00 0.00 0.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>
+          <gml:surfaceMember>
+                <gml:Polygon gml:id="p_w_22">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+                                5.00 0.00 0.00
+                                5.00 2.00 0.00
+                                5.00 2.00 3.00
+                                5.00 0.00 3.00
+                                5.00 0.00 0.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>        
+          <gml:surfaceMember>
+                <gml:Polygon gml:id="p_w_23">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+                                5.00 2.00 0.00
+                                3.00 2.00 0.00
+                                3.00 2.00 3.00
+								4.00 2.00 3.50
+                                5.00 2.00 3.00
+                                5.00 2.00 0.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>        
+          <gml:surfaceMember>
+                <gml:Polygon gml:id="p_w_24">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+                                3.00 2.00 0.00
+                                3.00 0.00 0.00
+                                3.00 0.00 3.00
+                                3.00 2.00 0.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>        
+          <gml:surfaceMember>
+                <gml:Polygon gml:id="p_w_25">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+                                3.00 2.00 0.00
+                                3.00 0.00 3.00
+                                3.00 2.00 3.00
+                                3.00 2.00 0.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>
+
+          <gml:surfaceMember>
+                <gml:Polygon gml:id="p_g_21">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+                                3.00 0.00 0.00
+                                3.00 2.00 0.00
+                                5.00 2.00 0.00
+                                5.00 0.00 0.00
+                                3.00 0.00 0.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>        
+          <gml:surfaceMember>
+                <gml:Polygon gml:id="p_r_21">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+                                3.00 0.00 3.00
+                                4.00 0.00 3.50
+								4.00 2.00 3.50
+								3.00 2.00 3.00
+                                3.00 0.00 3.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>        
+          <gml:surfaceMember>
+                <gml:Polygon gml:id="p_r_22">
+                    <gml:exterior>
+                        <gml:LinearRing>
+                            <gml:posList>
+                                5.00 0.00 3.00
+                                5.00 2.00 3.00
+								4.00 2.00 3.50
+								4.00 0.00 3.50
+                                5.00 0.00 3.00
+                            </gml:posList>
+                        </gml:LinearRing>
+                    </gml:exterior>
+                </gml:Polygon>
+          </gml:surfaceMember>        
+		</gml:CompositeSurface>
+</gml:exterior>
+				</gml:Solid>
+			</bldg:lod2Solid>
+		</bldg:Building>
+
+	</cityObjectMember>
+
+</CityModel>
+
