@@ -2,9 +2,9 @@
 
 For each software, all the GML files in the different folders should be validated and the results put in the __report.xls__ (an example of how to fill the __report.xls__ is also given).
 
-Each GML file contains one and only one solid, and (ideally) maximum 1 error. Some GML file contain a valid solid.
+Each GML file contains one and only one solid, and (ideally) maximum 1 error. Some GML files contain a valid solid.
 
-Everyone is invited to upload their file so that others test them. To get write access, send an email to Hugo Ledoux <h.ledoux@tudelft.nl>
+Everyone is invited to upload their files so that others can test them. To get write access, send an email to Hugo Ledoux <h.ledoux@tudelft.nl>
 
 For the tudelft folder, the naming convention is as follows:
 
