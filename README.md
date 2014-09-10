@@ -10,4 +10,5 @@ For the tudelft folder, the naming convention is as follows:
 
   * 0xx.gml : "simple" 2-manifolds (a shell in OGC jargon)
   * 1xx.gml : 2-manifold with inner rings in surfaces
-  * 2xx.gml : solids as defined in OGC/ISO19107, ie having >1 shells
+
+The solutions are given in the __answers.xls__ file in each folder.
