@@ -1,0 +1,260 @@
+\documentclass[a4paper,parskip=half,11pt]{scrartcl}
+
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} %-- pour utiliser des accents en français
+\usepackage{amsmath,amssymb,amsthm} 
+\usepackage[round]{natbib}
+\usepackage{url}
+\usepackage{xspace}
+\usepackage[left=20mm,top=20mm]{geometry}
+\usepackage{algorithmic}
+\usepackage{subcaption}
+\usepackage{mathpazo}
+\usepackage{booktabs}
+\usepackage{boxedminipage}
+\usepackage{hyperref}
+% \usepackage{draftwatermark}
+
+\newcommand{\ie}{ie}
+\newcommand{\eg}{eg}
+\newcommand{\reffig}[1]{Figure~\ref{#1}}
+\newcommand{\refsec}[1]{Section~\ref{#1}}
+\newtheorem{definition}{Definition}
+
+\setcapindent{1em} %-- for captions of Figures
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+
+\title{Three-dimensional primitives in the context\\ of the CityGML QIE}
+\author{Hugo Ledoux\\ \url{h.ledoux@tudelft.nl}}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+
+
+%%%
+%
+\section{What is an ISO 19107 solid?}
+
+ISO 19107 defines different geometric primitives\footnote{All the geometric primitive have the prefix `GM\_'}: a 0D primitive is a GM\_Point, a 1D a GM\_Curve, a 2D a GM\_Surface, and a 3D a GM\_Solid.
+A primitive is built with lower-dimensional primitives, \eg\ in Figure~\ref{fig:isoprimitives} the GM\_Surface is be composed of 2 (closed) GM\_Curves, which are composed on several GM\_Points.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\linewidth]{figs/isoprimitives.pdf}
+  \caption{ISO 19017 primitives.}
+\label{fig:isoprimitives}
+\end{figure}
+Observe that primitives do not need to be linear or planar, \ie\ curves defined by mathematical functions are allowed.
+
+The following three definitions from \citet{ISO19107} are relevant:
+\begin{definition}
+A GM\_Solid is the basis for 3-dimensional geometry. 
+The extent of a solid is defined by the boundary surfaces.
+The boundaries of GM\_Solids shall be represented as GM\_SolidBoundary.
+[\ldots] 
+The GM\_OrientablesSurfaces that bound a solid shall be oriented outward.
+\end{definition}
+\begin{definition}
+A GM\_Shell is used to represent a single connected component of a GM\_SolidBoundary. 
+It consists of a number of references to GM\_OrientableSurfaces connected in a topological cycle (an object whose boundary is empty). 
+[\ldots] 
+Like GM\_Rings, GM\_Shells are simple.
+\end{definition}
+\begin{definition}
+A GM\_Object is \emph{simple} if it has no interior point of self-intersection or self-tangency. 
+In mathematical formalisms, this means that every point in the interior of the object must have a metric neighbourhood whose intersection with the object is isomorphic to an $n$-sphere, where $n$ is the dimension of this GM\_Object.
+\end{definition}
+
+The bounding surfaces of a Shell thus form a \emph{two-dimensional manifold} (or 2-manifold for short).
+It is a space that is topologically equivalent to $\mathbb{R}^2$ (the 2D Euclidean space).
+An obvious example is the surface of the Earth, for which near to every point the surrounding area is topologically equivalent to a plane. 
+If we have a Shell stored in a data structure, it implies that each edge is guaranteed to have two incident faces, and that around each vertex the incident faces from one `umbrella'.
+% TODO : umbrella fig?
+
+Figure~\ref{fig:onesolid} shows a solid that respects that definition.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{figs/isosolid.pdf}
+  \caption{One solid which respects the international definition. It has one exterior shell and one interior shell (forming a cavity).}\label{fig:onesolid}
+\end{figure}
+First observe that the solid is composed of two shells (both forming its boundaries), one being the exterior and one being the interior shell.
+The exterior shell has eleven surfaces, and the interior one six.
+An interior shell creates a cavity in the solid---cavities are also referred to as ``voids'' or holes in a solid.
+A solid can have no inner shells, or several.
+Observe that a cavity is not the same as a hole in a torus (a donut) such as that in Figure~\ref{fig:torus}: it can be represented with one exterior shell having a genus of 1 and no interior shell.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\linewidth]{figs/torus.png}
+  \caption{A `squared torus' is modelled with one exterior boundary formed of ten surfaces. Notice that there are no interior boundary.}
+\label{fig:torus}
+\end{figure}
+
+
+%%%
+%
+\section{Primitives in CityGML}
+
+CityGML uses the ISO 19107 geometric primitives for representing the geometry of its objects.
+However, as shown in Figure~\ref{fig:citygmlgeom}
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{figs/citygmlgeom}
+  \caption{UML diagram of the CityGML geometry model.}
+\label{fig:citygmlgeom}
+\end{figure}
+only a subset is used, with the following 2 restrictions: (1) GM\_Curves can only be \emph{linear}, thus LineStrings and LinearRings are used; (2) GM\_Surfaces can only be \emph{planar}, thus Polygons are used.
+The primitives for constructing Shells and Solids are shown in Figure~\ref{fig:citygmlprimitives}.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\linewidth]{figs/citygmlprimitives}
+  \caption{2D CityGML primitives.}
+\label{fig:citygmlprimitives}
+\end{figure}
+\begin{definition}
+% A Curve is a 1-dimensional geometric object usually stored as a sequence of Points, with the subtype of Curve specifying the form of the interpolation between Points
+A LineString is a Curve with linear interpolation between Points. Each consecutive pair of Points defines a Line segment.
+A LinearRing is a LineString that is both closed and simple.
+\end{definition}
+\begin{definition}
+A Polygon is a surface patch that is defined by a set of boundary curves and an underlying surface to which these curves adhere. 
+The default is that the curves are coplanar and the polygon uses planar interpolation in its interior.
+\end{definition}
+
+Each shell of a solid is thus composed of Polygons, and these can have inner rings (which are often referred to as holes).
+Observe that the top polygon of the solid in Figure~\ref{fig:onesolid} has one inner ring, but that other polygons ``fill'' that hole so that the exterior shell is ``watertight''.
+
+
+%%%
+%
+\section{QIE = no cavaties}
+
+It should be noticed that during the QIE, only buildings in LOD1, LOD2 and LOD3 will be considered, and, as a consequence, cavities in solids are ignored.
+
+This imply that a solid has exactly \emph{one} shell representing its exterior boundary.
+However, this does \emph{not} mean that inner rings are also excluded, because simple LOD1 buildings having an inner yard for instance (as in Figure~\ref{fig:torus}) require inner rings (or the faces should be decomposed).
+
+
+%%%
+%
+\section{Requirements for validity of the 3D primitives}
+
+Each primitive used to construct a higher-dimensional primitive should be valid.
+For rings and polygons, observe that these will be embedded in 3D (\ie\ the points used to construct rings will have $(x,y,z)$ coordinates).
+This implies that they have to be projected to a plane so that a two-dimensional coordinate system is used.
+% TODO : fig of plane projection?
+
+
+\subsection{Rings \& Polygons}
+
+According to the ISO 19107 abstract specifications, the different boundaries of a polygon are allowed to interact with each other, but only under certain circumstances.
+The implementation specifications defined by the OGC~\citep{OGC-SF} give clear requirements, see the assertions in Figure~\ref{fig:ogcsf_definitions}.
+\begin{figure}
+  \centering
+\begin{boxedminipage}{.9\textwidth}
+  {\small
+\begin{enumerate}
+  \item Polygons are topologically closed;
+  \item The boundary of a Polygon consists of a set of LinearRings that make up its exterior and interior boundaries;
+  \item No two Rings in the boundary cross and the Rings in the boundary of a Polygon may intersect at a Point but only as a tangent, \eg\ 
+    \[
+       \forall P \in Polygon, \forall c1, c2 \in P.Boundary(), c1 \neq c2,
+    \]
+    \[
+        \forall p, q \in Point, p, q \in c1, p \neq q, [p \in c2 \Rightarrow q \notin c2];
+    \]
+  \item A Polygon may not have cut lines, spikes or punctures \eg:
+    \[
+       \forall P \in Polygon, P = P.Interior.Closure;
+    \]
+  \item The interior of every Polygon is a connected point set;
+  \item The exterior of a Polygon with 1 or more holes is not connected. Each hole defines a connected component of the exterior.
+\end{enumerate}
+}
+\end{boxedminipage}
+\caption{The six assertions for the validity of a polygon~\citep[pages 26--27]{OGC-SF}.}\label{fig:ogcsf_definitions}
+\end{figure}
+
+Some concrete examples of invalid polygons are shown in Figure~\ref{fig:p}, and here are a few examplanations:
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{figs/unitpolygons.pdf}
+  \caption{Some examples of invalid polygons. Polygon $p_{12}$ has its exterior and interior rings defined by the same geometry.}\label{fig:p}
+\end{figure}
+\begin{enumerate}
+  \item Each ring should be closed ($p_{11}$): its first and its last points should be the same.
+  \item Each ring defining the exterior and interior boundaries should be \emph{simple}, \ie\ non-self-intersecting ($p_{1}$ and $p_{10}$).  
+  Notice that this prevents the existence of rings with zero-area ($p_{6}$), and of rings having two consecutive points at the same location. 
+  It should be observed that the polygon $p_{1}$ is not allowed (in a valid representation of the polygon, the triangle should be represented as an interior boundary touching the exterior boundary).
+  \item The rings of a polygon should not cross ($p_{3}$, $p_{7}$, $p_{8}$ and $p_{12}$) but may intersect at one tangent point (the interior ring of $p_{2}$ is a valid case, although $p_2$ as a whole is not since the other interior ring is located \emph{outside} the interior one).
+  \item A polygon may not have cut lines, spikes or punctures ($p_{5}$ or $p_{6}$); removing these is known as the \emph{regularisation} of a polygon (a standard point-set topology operation).
+  \item The interior of every polygon is a connected point set ($p_{4}$).
+  \item Each interior ring creates a new area that is disconnected from the exterior. 
+  Thus, an interior ring cannot be located outside the exterior ring ($p_{2}$) or inside other interior rings ($p_{9}$).
+\end{enumerate}
+
+
+%%%
+\subsection{Planarity requirement}
+
+A polygon must be planar, \ie\ all its points (for both the exterior and interior rings) must lie on a plane.
+Interestingly, the concept of \emph{tolerance} is not mentioned in the standards ISO and OGC\@.
+
+Two requirements are proposed:
+\begin{enumerate}
+  \item the distance between every point forming a polygon and a plane is less than $\epsilon_1$, a given tolerance (\eg\ 1mm).
+  \item based on a triangulation of the polygon (any triangulation), the orientation of the normal of each triangle must not deviate more than $\epsilon_2$ (\eg\ 1 degree).
+\end{enumerate}
+
+The second requirement is to ensure that cases such as that in Figure~\ref{fig:planarity_fold} are detected.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\linewidth]{figs/planarity_fold}
+  \caption{All the points of the top polygon are within 1mm but the polygon cannot be considered planar.}
+\label{fig:planarity_fold}
+\end{figure}
+
+%%%
+\subsection{Orientation requirement}
+
+For a polygon embedded in the 2D plane, the orientation of its exterior ringmust be the opposite of that of its interior rings (clockwise versus counterclockwise).
+
+If one polygon is used to construct a shell, it must be oriented in such as way that when viewed from outside the shell its points are ordered counterclockwise.
+Figure~\ref{fig:orientation} shows an example.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{figs/orientation.pdf}
+  \caption{One solid and the orientation of 3 of its polygons (different colours).}
+\label{fig:orientation}
+\end{figure}
+In other words, the normal of the surface point outwards if a right-hand system is used, \ie\ when the ordering of points follows the direction of rotation of the curled fingers of the right hand, then the thumb points towards the outside.
+If the polygon has interior rings, then these have to be ordered clockwise.
+
+If the polygon is part of a MultiSurface, then there is no prescribed orientation besides the fact that the outer ring must have a different orientation than the inner ring(s).
+
+
+
+%%%
+\subsection{Requirements for shells and solids}
+
+To understand the requirements for shells and solids, we can simply generalise the assertions in Figure~\ref{fig:ogcsf_definitions}: polygons become solids, rings become shells, and holes become cavities.
+
+The first assertion means that a solid must be closed, or `watertight'.
+The solid $s_1$ is thus not valid but $s_2$ is since the hole in the top surface is `filled' with other faces.
+
+The second assertion implies that each shell must be simple, \ie\ that it is a 2-manifold.
+
+The fourth assertion states that a shell is a 2-manifold and that no dangling pieces can exist (such as that of $s_6$); it is equivalent to the \emph{regularisation} of a point-set in $\mathbb{R}^3$.
+
+The other assertions refer to solids having interior shells, which are out of scope for the QIE, and thus ignored.
+
+
+
+\bibliographystyle{/Users/hugo/references/hugo}
+\bibliography{/Users/hugo/references/references}
+\end{document}
