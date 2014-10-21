@@ -71,16 +71,20 @@ A GM\_Object is \emph{simple} if it has no interior point of self-intersection o
 In mathematical formalisms, this means that every point in the interior of the object must have a metric neighbourhood whose intersection with the object is isomorphic to an $n$-sphere, where $n$ is the dimension of this GM\_Object.
 \end{definition}
 
-The bounding surfaces of a Shell thus form a \emph{two-dimensional manifold} (or 2-manifold for short).
-It is a space that is topologically equivalent to $\mathbb{R}^2$ (the 2D Euclidean space).
+The bounding surfaces of a shell thus form a \emph{closed} and \emph{orientable}  \emph{two-dimensional manifold} (or 2-manifold for short).
+A 2-manifold is a space that is topologically equivalent to $\mathbb{R}^2$, the 2D Euclidean space.
 An obvious example is the surface of the Earth, for which near to every point the surrounding area is topologically equivalent to a plane. 
-If we have a Shell stored in a data structure, it implies that each edge is guaranteed to have a maximum of two incident faces, and that around each vertex the incident faces from one `umbrella', as Figure~\ref{fig:umbrella} shows.
+If we have a shell stored in a data structure, it implies that each edge is guaranteed to have a maximum of two incident faces, and that around each vertex the incident faces from one `umbrella', as Figure~\ref{fig:umbrella} shows.
 \begin{figure}
   \centering
   \includegraphics[width=0.35\linewidth]{figs/umbrella}
   \caption{The red vertex is a non-manifold vertex since the neighbourhood aroud it is not topologically equivalent to a plane.}
 \label{fig:umbrella}
 \end{figure}
+To be valid shell, the 2-manifold should be closed, \ie\ there should not be `holes' in the surface (in other words, it should be watertight).
+% It should furthermore be an orientable surface, Möbius strip not allowed.
+% From Claus Nagel: However, the shell of a solid cannot be any 2-manifold, it must be a closed, orientable surface. Specifically, the shell must be homeomorphic to an n-holed torus, with the 0-holed torus being the n-sphere.
+
 
 
 Figure~\ref{fig:onesolid} shows a solid that respects that definition.
@@ -143,7 +147,7 @@ Observe that the top polygon of the solid in Figure~\ref{fig:onesolid} has one i
 It should be noticed that during the QIE, only buildings in LOD1, LOD2 and LOD3 will be considered, and, as a consequence, cavities in solids are ignored.
 
 This imply that a solid has exactly \emph{one} shell representing its exterior boundary.
-However, this does \emph{not} mean that inner rings are also excluded, because simple LOD1 buildings having for instance an inner yard require inner rings, as in Figure~\ref{fig:torus} shows; an alternative to representing inner rings is to decompose the face into several polygons, \eg\ to triangulate it.
+However, this does \emph{not} mean that inner rings in the boundary surfaces are excluded, because simple LOD1 buildings having for instance an inner yard require inner rings, as in Figure~\ref{fig:torus} shows; an alternative to representing inner rings is to decompose the face into several polygons, \eg\ to triangulate it.
 
 
 %%%
@@ -153,7 +157,7 @@ However, this does \emph{not} mean that inner rings are also excluded, because s
 Each primitive used to construct a higher-dimensional primitive should be valid.
 This means that in order to validate a solid, we need to also ensure that each ring and polygon used be valid.
 For rings and polygons, observe that these will be embedded in 3D (\ie\ the points used to construct rings will have $(x,y,z)$ coordinates).
-This implies that they have to be projected to a plane so that a two-dimensional coordinate system is used.
+% This implies that they have to be projected to a plane so that a two-dimensional coordinate system is used.
 
 
 \subsection{Rings \& Polygons}
@@ -183,7 +187,7 @@ The implementation specifications defined by the OGC~\citep{OGC-SF} give clear r
 \end{enumerate}
 }
 \end{boxedminipage}
-\caption{The six assertions for the validity of a polygon~\citep[pages 26--27]{OGC-SF}.}\label{fig:ogcsf_definitions}
+\caption{The six assertions for the validity of a 2D polygon embedded in $\mathbb{R}^2$~\citep[pages 26--27]{OGC-SF}.}\label{fig:ogcsf_definitions}
 \end{figure}
 
 Some concrete examples of invalid polygons are shown in Figure~\ref{fig:p}, and here are a few examplanations:
@@ -197,7 +201,7 @@ Some concrete examples of invalid polygons are shown in Figure~\ref{fig:p}, and 
   \item Each ring defining the exterior and interior boundaries should be \emph{simple}, \ie\ non-self-intersecting ($p_{1}$ and $p_{10}$).  
   Notice that this prevents the existence of rings with zero-area ($p_{6}$), and of rings having two consecutive points at the same location. 
   It should be observed that the polygon $p_{1}$ is not allowed (in a valid representation of the polygon, the triangle should be represented as an interior boundary touching the exterior boundary).
-  \item The rings of a polygon should not cross ($p_{3}$, $p_{7}$, $p_{8}$ and $p_{12}$) but may intersect at one tangent point (the interior ring of $p_{2}$ is a valid case, although $p_2$ as a whole is not since the other interior ring is located \emph{outside} the interior one).
+  \item The rings of a polygon should not cross ($p_{3}$, $p_{7}$, $p_{8}$ and $p_{12}$) but may intersect at one tangent point (the interior ring of $p_{2}$ is a valid case, although $p_2$ as a whole is not since the other interior ring is located \emph{outside} the interior one). More than one tangent point is allowed, as long as the interior of the polygon stays connected (see below).
   \item A polygon may not have cut lines, spikes or punctures ($p_{5}$ or $p_{6}$); removing these is known as the \emph{regularisation} of a polygon (a standard point-set topology operation).
   \item The interior of every polygon is a connected point set ($p_{4}$).
   \item Each interior ring creates a new area that is disconnected from the exterior. 
@@ -215,7 +219,7 @@ Interestingly, the concept of \emph{tolerance} is not mentioned in the standards
 For the QIE, two requirements are proposed:
 \begin{enumerate}
   \item the distance between every point forming a polygon and a plane is less than $\epsilon_1$, a given tolerance (\eg\ 1mm).
-  This plane should a plane fitted with least-square adjustment. 
+  This plane should be a plane fitted with least-square adjustment.
   \item the distance between every point forming a polygon and all the planes defined by all possible combinaisons of 3 non-colinear points is less than $\epsilon_1$.
 \end{enumerate}
 
@@ -231,7 +235,7 @@ From algorithmic point of view, the definition is not very efficient, but in pra
 
 %%%
 \subsection{Snapping tolerances for vertices}
-Geometries modelled in CityGML store amazingly very little topological relationships. 
+Geometries modelled in CityGML, and in GML in general, store amazingly very little topological relationships. 
 For instance, all six surfaces of a cube are stored independently. 
 This means that the coordinates ($x,y,z$) of a single point (where 3 polygons ``meet'') is stored 3 times. 
 It is possible that these 3 vertices are not exactly at the same location, \eg\ (0.01, 0.5, 1.0), (0.011, 0.49999, 1.00004) and (0.01002, 0.5002, 1.0007), and that would create problems when validating since there would for example be tiny cracks/overlaps in the cube.
@@ -248,7 +252,7 @@ This value should be defined by the user
 
 For a polygon embedded in the 2D plane, the orientation of its exterior ring must be the opposite of that of its interior rings (\eg\ clockwise versus counterclockwise).
 
-If one polygon is used to construct a shell, it must be oriented in such as way that when viewed from outside the shell its points are ordered counterclockwise.
+If one polygon is used to construct a shell, the exterior ring must be oriented in such as way that when viewed from outside the shell the points are ordered counterclockwise.
 Figure~\ref{fig:orientation} shows an example.
 \begin{figure}
   \centering
