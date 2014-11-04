@@ -4,13 +4,13 @@ Each GML file contains one and only one solid, and (ideally) maximum 1 error.
 
 There are 3 "types" of file:
 
-  1. v*XXX*.gml: solid is valid 
-  2. i*XXX_Y*.gml: solid is invalid, the reason is "XXX" (see below for the codes)
-  3. t*XXX_*Y.gml: solid is valid, but that is based on a tolerance  
+  1. *vXXX.gml*: solid is valid 
+  2. *iXXX_Y.gml*: solid is invalid, the reason is "XXX" (see below for the codes)
+  3. *tXXX_Y.gml*: validity is based on a tolerance; 1E-Y is the amount by which one vertex is moved, thus for *t203_1.gml* one vertex was moved by 10cm.
 
 The codes for the errors:
 
-### RING level
+#### RING level
 
    * 101: GE_R_TOO_FEW_POINTS (<3 points)
    * 102: GE_R_CONSECUTIVE_POINTS_SAME (2 consecutive points are the same)       ⁄
@@ -18,7 +18,7 @@ The codes for the errors:
    * 104: GE_R_SELF_INTERSECTION (self-intersects, ie a bowtie)
    * 105: GE_R_COLLAPSED (is point or line)       
 
-### POLYGON level
+#### POLYGON level
 
    * 201: GE_P_INTERSECTION_RINGS (2+ rings intersect)       
    * 202: GE_P_DUPLICATED_RINGS (2+ rings identical)       
@@ -29,7 +29,7 @@ The codes for the errors:
    * 207: GE_P_INNER_RINGS_NESTED (interior ring is located inside other)   
    * 208: GE_P_ORIENTATION_RINGS_SAME (exterior and interior rings have same orientation)   
 
-### SHELL level
+#### SHELL level
 
    * 301: GE_S_TOO_FEW_POLYGONS (<4 polygons)
    * 302: GE_S_NOT_CLOSED (there is 1+ hole(s) on the surface)          
