@@ -2,11 +2,13 @@
 
 Each GML file contains one and only one solid, and (ideally) maximum 1 error.
 
+The file `description.csv` describes each file briefly.
+
 There are 3 "types" of file:
 
-  1. *vXXX.gml*: solid is valid 
-  2. *iXXX_Y.gml*: solid is invalid, the reason is "XXX" (see below for the codes)
-  3. *tXXX_Y.gml*: validity is based on a tolerance; 1E-Y is the amount by which one vertex is moved, thus for *t203_1.gml* one vertex was moved by 10cm.
+  1. `vXXX.gml`: solid is valid 
+  2. `iXXX_Y.gml`: solid is invalid, the reason is "XXX" (see below for the codes)
+  3. `tXXX_Y.gml`: validity is based on a tolerance; 1E-Y is the amount by which one vertex is moved, thus for *t203_1.gml* one vertex was moved by 10cm.
 
 The codes for the errors are as follows. In accordance with the QIE naming schema for the requirements, all the geometric errors are in the "GE" domain. Also, since the geometric validation is performed at 3 different levels (based on the primitives), the requirements also contain the level:
 

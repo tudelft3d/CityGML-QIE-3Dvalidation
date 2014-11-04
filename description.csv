@@ -1,0 +1,53 @@
+i101_1.gml;cube with top face having only 2 points
+i102_1.gml;cube with one duplicate vertex (repeated in a ring)
+i104_1.gml;cube where top face has a bow tie
+i104_2.gml;unit cube with top face having a self-intersecting surface (2D invalid), 2 of the faces of cube22 are 'bundled' as one polygon (which self-intersects)
+i105_1.gml;cube3 where inner ring is collapsed to a line
+i201_1.gml;unit cube with a intersecting rings in top face
+i202_1.gml;unit cube with a duplicate inner ring top face
+i203_1.gml;solid #26 in "Josef's Muchen data”: surface #12 ain't planar
+t203_1.gml;planarity: cube with one point of top surface moved upward by 1e-? units
+t203_2.gml;? depends on tolerance
+t203_3.gml;? depends on tolerance
+t203_4.gml;? depends on tolerance
+i204_1.gml;cube with an almost vertical fold in the top surface, aka as the "Kevin Wiebe's case”.  The shift is 1mm. 
+i204_2.gml;same shift but vertical
+i205_1.gml;unit cube with a polygon with interior disconnected in top face
+i206_1.gml;unit cube with a hole in top face located outside
+i207_1.gml;unit cube with a polygon with nested rings in top face
+i208_1.gml;unit cube with a hole (inner ring) in the top face having same orientation as outer ring
+i301_1.gml;volume with only 3 surfaces
+i301_2.gml;flat cube, ie with volume of 0
+i302_1.gml;unit cube with one face missing (bottom one)
+t302_1.gml;snap: cube with top surface having one vertex moved a bit (10cm), to test snapping in GML input
+t302_2.gml;snap: cube with top surface having one vertex moved a bit (1cm), to test snapping in GML input
+t302_3.gml;snap: cube with top surface having one vertex moved a bit (1mm), to test snapping in GML input
+i302_2.gml;unit cube with a hole (inner ring) in the top face; the inner ring isn't filled by another face, so not watertight
+i303_1.gml;unit cube with one dangling face touching the cube at one point only; the dangling face is the last in the list
+i303_2.gml;cube with one dangling face, touching only at one point; the dangling face is the 1st in the list
+i303_3.gml;2 unit cubes touching at one vertex
+i304_1.gml;unit cube with an extra vertex on an edge. Only one of the 2 incident faces has it explicitly.
+i304_2.gml;unit cube with one extra face in the middle, splitting the cube in two parts
+i305_1.gml;cube with one extra face "floating" in the air, not touching
+i305_2.gml;2 unit cubes not touching at all, one above the other separated by 1unit
+i306_1.gml;house with tip below the ground
+i306_2.gml;house with tip touching the bottom faces
+i306_3.gml;unit cube with one extra face inside another face
+i306_4.gml;torus where the hole in the top/bottom faces touches the side surfaces
+i307_1.gml;unit cube with one face (face #0) with opposite orientation
+i308_1.gml;axis-aligned cube with normals all pointing inwards
+i308_2.gml;not axis-aligned cube with normals all pointing inwards
+v001.gml;unit cube
+v002.gml;not axis-aligned cube with normals all pointing outwards; the first extreme point along x has a flat star
+v003.gml;unit cube with top face having 3 triangles forming the square
+v004.gml;cube translated by (99999990, 99999990) so that big coordinates
+v005.gml;cube translated by (3333399999990, 3333399999990) so that very big coordinates
+v006.gml;cube with -100.0 as z-coordinates
+v007.gml;solid #41 in "Josef's Muchen data", crashing if no translation
+v008.gml;non-convex shape; top and bottom faces are non-convex polygons
+v009.gml;cube with a pyramidal roof
+v010.gml;Stanford bunny: valid
+v011.gml;cube3 where there are extra faces that fill the hole on top face
+v012.gml;cube5 where hole (inner ring) is touching the outer ring of a face
+v013.gml;cube3 with one surface filling the hole
+v014.gml;a "squared donut", genus of the shell is 1
