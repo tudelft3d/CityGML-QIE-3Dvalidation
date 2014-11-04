@@ -10,7 +10,7 @@ There are 3 "types" of file:
 
 The codes for the errors are as follows. In accordance with the QIE naming schema for the requirements, all the geometric errors are in the "GE" domain. Also, since the geometric validation is performed at 3 different levels (based on the primitives), the requirements also contain the level:
 
-   * *R*ing:
+   * _R_ing:
    * *P*olygon
    * *S*hell
 
