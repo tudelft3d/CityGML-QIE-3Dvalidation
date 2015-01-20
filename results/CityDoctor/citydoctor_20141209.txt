@@ -1,0 +1,17 @@
+I analysed the results quickly, some comments:
+
+- you’re not using the QIE codes: when do you think you’ll implement these?
+- it seems your implementation still doesn’t support inner rings. That
+means that a lot of the errors you returned are wrong, there’s just a
+“cascading effect” that caused the solid to be returned wrong but what
+you return is no what should be returned. If you used (or mapped) the
+error codes to the QIE ones that would help analyse. But if you
+implement inner rings it’ll fix most problems (it ain’t an easy task
+though).
+- planarity: would be nice to know what tolerance you used, and can
+that be adjusted?
+- big-big coordinates = you have problems. But the solution is simple:
+translate all input solids by their minx-ming and the problem is
+solved.
+
+Hugo
