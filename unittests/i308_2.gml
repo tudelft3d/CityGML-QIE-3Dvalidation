@@ -10,11 +10,11 @@
 								<gml:Polygon>
 									<gml:exterior>
 										<gml:LinearRing>
-											<gml:pos>2.3242 12.1806 15.6052</gml:pos>
-											<gml:pos>-20.4452 -25.325 -15.6052</gml:pos>
-											<gml:pos>4.5912 -40.5244 -15.6052</gml:pos>
-											<gml:pos>27.3606 -3.0188 15.6052</gml:pos>
-											<gml:pos>2.3242 12.1806 15.6052</gml:pos>
+											<gml:pos>0.0 0.0 0.0</gml:pos>
+											<gml:pos>1.0 0.1 0.0</gml:pos>
+											<gml:pos>1.1 1.0 0.0</gml:pos>
+											<gml:pos>0.5 1.3 0.0</gml:pos>
+											<gml:pos>0.0 0.0 0.0</gml:pos>
 										</gml:LinearRing>
 									</gml:exterior>
 								</gml:Polygon>
@@ -23,11 +23,11 @@
 								<gml:Polygon>
 									<gml:exterior>
 										<gml:LinearRing>
-											<gml:pos>-5.1491 -56.5685 10.781</gml:pos>
-											<gml:pos>-30.1854 -41.3692 10.781</gml:pos>
-											<gml:pos>-7.416 -3.8635 41.9915</gml:pos>
-											<gml:pos>17.6203 -19.0629 41.9915</gml:pos>
-											<gml:pos>-5.1491 -56.5685 10.781</gml:pos>
+											<gml:pos>0.0 0.0 1.0</gml:pos>
+											<gml:pos>0.5 1.3 1.0</gml:pos>
+											<gml:pos>1.1 1.0 1.0</gml:pos>
+											<gml:pos>1.0 0.1 1.0</gml:pos>
+											<gml:pos>0.0 0.0 1.0</gml:pos>
 										</gml:LinearRing>
 									</gml:exterior>
 								</gml:Polygon>
@@ -36,11 +36,11 @@
 								<gml:Polygon>
 									<gml:exterior>
 										<gml:LinearRing>
-											<gml:pos>4.5912 -40.5244 -15.6052</gml:pos>
-											<gml:pos>-20.4452 -25.325 -15.6052</gml:pos>
-											<gml:pos>-30.1854 -41.3692 10.781</gml:pos>
-											<gml:pos>-5.1491 -56.5685 10.781</gml:pos>
-											<gml:pos>4.5912 -40.5244 -15.6052</gml:pos>
+											<gml:pos>0.0 0.0 0.0</gml:pos>
+											<gml:pos>0.0 0.0 1.0</gml:pos>
+											<gml:pos>1.0 0.1 1.0</gml:pos>
+											<gml:pos>1.0 0.1 0.0</gml:pos>
+											<gml:pos>0.0 0.0 0.0</gml:pos>
 										</gml:LinearRing>
 									</gml:exterior>
 								</gml:Polygon>
@@ -49,11 +49,11 @@
 								<gml:Polygon>
 									<gml:exterior>
 										<gml:LinearRing>
-											<gml:pos>27.3606 -3.0188 15.6052</gml:pos>
-											<gml:pos>4.5912 -40.5244 -15.6052</gml:pos>
-											<gml:pos>-5.1491 -56.5685 10.781</gml:pos>
-											<gml:pos>17.6203 -19.0629 41.9915</gml:pos>
-											<gml:pos>27.3606 -3.0188 15.6052</gml:pos>
+											<gml:pos>1.0 0.1 0.0</gml:pos>
+											<gml:pos>1.0 0.1 1.0</gml:pos>
+											<gml:pos>1.1 1.0 1.0</gml:pos>
+											<gml:pos>1.1 1.0 0.0</gml:pos>
+											<gml:pos>1.0 0.1 0.0</gml:pos>
 										</gml:LinearRing>
 									</gml:exterior>
 								</gml:Polygon>
@@ -62,11 +62,11 @@
 								<gml:Polygon>
 									<gml:exterior>
 										<gml:LinearRing>
-											<gml:pos>2.3242 12.1806 15.6052</gml:pos>
-											<gml:pos>27.3606 -3.0188 15.6052</gml:pos>
-											<gml:pos>17.6203 -19.0629 41.9915</gml:pos>
-											<gml:pos>-7.416 -3.8635 41.9915</gml:pos>
-											<gml:pos>2.3242 12.1806 15.6052</gml:pos>
+											<gml:pos>1.1 1.0 0.0</gml:pos>
+											<gml:pos>1.1 1.0 1.0</gml:pos>
+											<gml:pos>0.5 1.3 1.0</gml:pos>
+											<gml:pos>0.5 1.3 0.0</gml:pos>
+											<gml:pos>1.1 1.0 0.0</gml:pos>
 										</gml:LinearRing>
 									</gml:exterior>
 								</gml:Polygon>
@@ -75,11 +75,11 @@
 								<gml:Polygon>
 									<gml:exterior>
 										<gml:LinearRing>
-											<gml:pos>-20.4452 -25.325 -15.6052</gml:pos>
-											<gml:pos>2.3242 12.1806 15.6052</gml:pos>
-											<gml:pos>-7.416 -3.8635 41.9915</gml:pos>
-											<gml:pos>-30.1854 -41.3692 10.781</gml:pos>
-											<gml:pos>-20.4452 -25.325 -15.6052</gml:pos>
+											<gml:pos>0.0 0.0 0.0</gml:pos>
+											<gml:pos>0.5 1.3 0.0</gml:pos>
+											<gml:pos>0.5 1.3 1.0</gml:pos>
+											<gml:pos>0.0 0.0 1.0</gml:pos>
+											<gml:pos>0.0 0.0 0.0</gml:pos>
 										</gml:LinearRing>
 									</gml:exterior>
 								</gml:Polygon>
