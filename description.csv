@@ -9,7 +9,7 @@ t203_1.gml;planarity: cube with one point of top surface moved upward by 1e-? un
 t203_2.gml;? depends on tolerance
 t203_3.gml;? depends on tolerance
 t203_4.gml;? depends on tolerance
-t203_5.gml;surface #12 ain't planar
+t203_5.gml;surfaces #4 and #12 ain't planar
 i204_1.gml;cube with an almost vertical fold in the top surface, aka the "Kevin Wiebe's case”.  The shift is 1mm. 
 i204_2.gml;same shift but vertical
 i205_1.gml;unit cube with a polygon with interior disconnected in top face
