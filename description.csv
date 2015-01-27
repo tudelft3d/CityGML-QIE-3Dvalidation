@@ -46,7 +46,6 @@ v006.gml;cube with -100.0 as z-coordinates
 v007.gml;a real-life building from Munich
 v008.gml;non-convex shape, top and bottom faces are non-convex polygons
 v009.gml;cube with a pyramidal roof
-v010.gml;Stanford bunny: valid
 v011.gml;cube3 where there are extra faces that fill the hole on top face
 v012.gml;cube5 where hole (inner ring) is touching the outer ring of a face
 v013.gml;cube3 with one surface filling the hole
