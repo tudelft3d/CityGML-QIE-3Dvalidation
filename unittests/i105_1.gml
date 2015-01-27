@@ -20,8 +20,8 @@
 									<gml:interior>
 										<gml:LinearRing>
 											<gml:pos>0.2 0.2 1.0</gml:pos>
+											<gml:pos>0.5 0.2 1.0</gml:pos>
 											<gml:pos>0.8 0.2 1.0</gml:pos>
-											<gml:pos>0.2 0.2 1.0</gml:pos>
 											<gml:pos>0.2 0.2 1.0</gml:pos>
 										</gml:LinearRing>
 									</gml:interior>
