@@ -2,7 +2,7 @@
 # RING
 
 | 101 -- TOO_FEW_POINTS |
-| --- |
+|:--- |
 | A ring should have at least 3 points. For GML rings, this error ignores the fact that the first and the last point of a ring are the same (requirements #103), ie a GML ring should have at least 4 points. |
 
 | 102 -- CONSECUTIVE_POINTS_SAME |
