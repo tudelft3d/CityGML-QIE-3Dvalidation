@@ -596,7 +596,7 @@ shell}</string>
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qc
 
-\f0\fs20 \cf0 104}</string>
+\f0\fs20 \cf0 308}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -2745,7 +2745,7 @@ Rings}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2015-01-28 15:41:33 +0000</string>
+	<string>2015-01-28 15:54:40 +0000</string>
 	<key>Modifier</key>
 	<string>Hugo Ledoux</string>
 	<key>NotesVisible</key>
