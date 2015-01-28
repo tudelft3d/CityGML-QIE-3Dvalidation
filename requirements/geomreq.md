@@ -1,0 +1,118 @@
+
+# RING
+
+| 101 -- TOO_FEW_POINTS |
+| --- |
+| A ring should have at least 3 points. For GML rings, this error ignores the fact that the first and the last point of a ring are the same (requirements #103), ie a GML ring should have at least 4 points. |
+
+| 102 -- CONSECUTIVE_POINTS_SAME |
+| --- |
+| A common error in GIS data is that 2 *consecutive* points are at the same location. Observe that for a ring no points should be repeated (except first-last in case of GML), but this test only verifies consecutive points. Error 104 is for repeated points that are not consecutive. |
+
+This ring is for instance invalid:
+
+```xml
+<gml:LinearRing>
+  <gml:pos>0.0 0.0 0.0</gml:pos>
+  <gml:pos>1.0 0.0 0.0</gml:pos>
+  <gml:pos>1.0 0.0 0.0</gml:pos>
+  <gml:pos>1.0 1.0 0.0</gml:pos>
+  <gml:pos>0.0 1.0 0.0</gml:pos>
+  <gml:pos>0.0 0.0 0.0</gml:pos>
+</gml:LinearRing>
+```
+
+| 103 -- NOT_CLOSED |
+| --- |
+| *This applies only to GML rings*. The first and last points have to be identical (at the same location). |
+
+This ring is for instance invalid:
+
+```xml
+<gml:LinearRing>
+  <gml:pos>0.0 0.0 0.0</gml:pos>
+  <gml:pos>1.0 0.0 0.0</gml:pos>
+  <gml:pos>1.0 1.0 0.0</gml:pos>
+  <gml:pos>0.0 1.0 0.0</gml:pos>
+</gml:LinearRing>
+```
+
+| 104 -- SELF_INTERSECTION |
+| --- |
+| A ring should be *simple*, ie it should not self-intersect. The self-intersection can be at the location of an explicit point, or not. |
+
+
+| 105 -- COLLAPSED_TO_LINE |
+| --- |
+| A special case for self-intersection: the ring is collapsed to a line.  | 
+
+
+# POLYGON
+
+| 201: INTERSECTION_RINGS |
+| --- |
+| Two or more rings intersect, these can be either the exterior ring with an interior ring or only interior rings.       |
+
+| 202: DUPLICATED_RINGS |
+| --- |
+| Two or more rings are identical.  |
+
+| 203: NON_PLANAR_POLYGON_DISTANCE_PLANE |
+| --- |
+| A polygon must be planar, ie all its points (used for both the exterior and interior rings) must lie on a plane. To verify this, the distance between every point forming a polygon and a plane is less than $$\epsilon_1$$, a given *tolerance* (eg 1cm). This plane should be a plane fitted with least-square adjustment. |
+
+| 204: NON_PLANAR_POLYGON_NORMALS_DEVIATION |
+| --- |
+| To ensure that cases such as that below are detected, another requirement is necessary: the distance between every point forming a polygon and all the planes defined by all possible combinaisons of 3 non-colinear points is less than $$\epsilon_1$$. In practice it can be implemented with a triangulation of the polygon (any triangulation): the orientation of the normal of each triangle must not deviate more than than a certain usef-defined tolerance $$\epsilon_2$$ (eg 1 degree).     |
+
+| 205: INTERIOR_DISCONNECTED |
+| --- |
+| If one or more interior rings makes the interior of the polygon disconnected then the polygon is invalid. |
+
+| 206: HOLE_OUTSIDE |
+| --- |
+| One or more interior ring(s) is(are) located completely outside the exterior ring. If the interior ring intersects the exterior ring, then error 201 should be returned. |
+
+| 207: INNER_RINGS_NESTED |
+| --- |
+| One or more interior ring(s) is(are) located completely inside another interior ring. |
+
+| 208: ORIENTATION_RINGS_SAME |
+| --- |
+| The interior rings must have the opposite direction (clockwise vs counter-clockwise) when viewed from a given point-of-view. When the polygon is used as a bounding surface of a shell, then the rings have to have a specified orientation (error 307/308) but this requirement is only for opposite orientation.  |
+
+
+# SHELL
+
+| 301 -- TOO_FEW_POLYGONS |
+| --- |
+| <4 polygons |
+
+| 302 -- NOT_CLOSED |
+| --- |
+| there is 1+ hole(s) on the surface          |
+
+| 303 -- NON_MANIFOLD_VERTEX |
+| --- |
+| |
+
+| 304 -- NON_MANIFOLD_EDGE |
+| --- |
+| |
+
+| 305 -- MULTIPLE_CONNECTED_COMPONENTS |
+| --- |
+| 1+ polygons not connected to main shell|
+
+| 306 -- SELF_INTERSECTION |
+| --- |
+||
+
+| 307 -- POLYGON_WRONG_ORIENTATION |
+| --- |
+| orientation of a polygon not correct|
+
+| 308 -- ALL_POLYGONS_WRONG_ORIENTATION |
+| --- |
+| normals all pointing in wrong direction |
+
