@@ -5,6 +5,15 @@
 |:--- |
 | A ring should have at least 3 points. For GML rings, this error ignores the fact that the first and the last point of a ring are the same (see 103), ie a GML ring should have at least 4 points. |
 
+This ring is for instance invalid:
+
+```xml
+<gml:LinearRing>
+  <gml:pos>0.0 0.0 0.0</gml:pos>
+  <gml:pos>1.0 0.0 0.0</gml:pos>
+  <gml:pos>0.0 0.0 0.0</gml:pos>
+</gml:LinearRing>
+```
 | 102 -- CONSECUTIVE_POINTS_SAME |
 |:--- |
 | Points in a ring should not be repeated (except first-last in case of GML, see 103). This error is for the common error where 2 *consecutive* points are at the same location. Error 104 is for points in a ring that are repeated, but not consecutive. |
@@ -45,7 +54,7 @@ This ring is for instance invalid:
 
 | 105 -- COLLAPSED_TO_LINE |
 |:--- |
-| A special case for self-intersection: the ring is collapsed to a line.  | 
+| A special case of self-intersection (104): the ring is collapsed to a line. If the geometry is collapsed to a point, then 101/102 should be used. | 
 
 ![](figs/105.png)
 
@@ -75,7 +84,7 @@ This ring is for instance invalid:
 
 | 205: INTERIOR_DISCONNECTED |
 |:--- |
-| The interior of a polygon must be connected. The combinaison of different valid rings can create such an error, see one example: |
+| The interior of a polygon must be connected. The combinaison of different valid rings can create such an error, for example: |
 
 ![](figs/205.png)
 
@@ -102,29 +111,40 @@ This ring is for instance invalid:
 
 | 301 -- TOO_FEW_POLYGONS |
 |:--- |
-| A shell should have at least 4 polygons---the simplest volumetric shape in 3D is a tetrahedron.  |
+| A shell should have at least 4 polygons---the simplest volumetric shape in 3D is a tetrahedron. |
 
 
 | 302 -- NOT_CLOSED |
 |:--- |
-| The shell must not have 'holes', ie it must be 'watertight'. This refers only to the topology of the shell, not to its geometry (see error 306) |
+| The shell must not have 'holes', ie it must be 'watertight'. This refers only to the topology of the shell, not to its geometry (see 306). |
 
+The left solid is invalid, while the right one is valid (since the hole is filled with other polygons):
+
+![](figs/302.png)
 
 | 303 -- NON_MANIFOLD_VERTEX |
 |:--- |
 | Each shell must be simple, ie it must be a 2-manifold. A vertex is non-manifold when its incident polygons do not form one `umbrella'|
 
+![](figs/303.png)
+
 | 304 -- NON_MANIFOLD_EDGE |
 |:--- |
 | Each edge of a shell should have exactly 2 incident polygons. |
 
+![](figs/304.png)
+
 | 305 -- MULTIPLE_CONNECTED_COMPONENTS |
 |:--- |
-| Polygons that are not connected to the shell should be reported as an error. |
+| Polygons that are not connected to the shell should be reported as an error.  |
+
+![](figs/305.png)
 
 | 306 -- SELF_INTERSECTION |
 |:--- |
-| If topology of the shell is correct and it is closed (thus no error 302/303/304/305), it is possible that the geometry introduces errors, eg intersections. |
+| If topology of the shell is correct and the shell is closed (thus no error 301/302/303/304/305), it is possible that the geometry introduces errors, eg intersections. For instance, the topology of both these shells is identical, but the geometry differs. The left shell is valid while the right one is invalid. |
+
+![](figs/306.png)
 
 | 307 -- POLYGON_WRONG_ORIENTATION |
 |:--- |
@@ -132,5 +152,5 @@ This ring is for instance invalid:
 
 | 308 -- ALL_POLYGONS_WRONG_ORIENTATION |
 |:--- |
-| If all the polygons have the wrong orientation (as defined in 307). |
+| If all the polygons have the wrong orientation (as defined in 307), ie they all point inwards. |
 
