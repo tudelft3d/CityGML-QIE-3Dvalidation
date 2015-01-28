@@ -74,7 +74,7 @@ In mathematical formalisms, this means that every point in the interior of the o
 The bounding surfaces of a shell thus form a \emph{closed} and \emph{orientable}  \emph{two-dimensional manifold} (or 2-manifold for short).
 A 2-manifold is a space that is topologically equivalent to $\mathbb{R}^2$, the 2D Euclidean space.
 An obvious example is the surface of the Earth, for which near to every point the surrounding area is topologically equivalent to a plane. 
-If we have a shell stored in a data structure, it implies that each edge is guaranteed to have a maximum of two incident faces, and that around each vertex the incident faces from one `umbrella', as Figure~\ref{fig:umbrella} shows.
+If we have a shell stored in a data structure, it implies that each edge is guaranteed to have a maximum of two incident faces, and that around each vertex the incident faces form one `umbrella', as Figure~\ref{fig:umbrella} shows.
 \begin{figure}
   \centering
   \includegraphics[width=0.35\linewidth]{figs/umbrella}
@@ -252,7 +252,7 @@ This value should be defined by the user
 
 For a polygon embedded in the 2D plane, the orientation of its exterior ring must be the opposite of that of its interior rings (\eg\ clockwise versus counterclockwise).
 
-If one polygon is used to construct a shell, the exterior ring must be oriented in such as way that when viewed from outside the shell the points are ordered counterclockwise.
+If one polygon is used to construct a shell, its exterior ring must be oriented in such as way that when viewed from outside the shell the points are ordered counterclockwise.
 Figure~\ref{fig:orientation} shows an example.
 \begin{figure}
   \centering
