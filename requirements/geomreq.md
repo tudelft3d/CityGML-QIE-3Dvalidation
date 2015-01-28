@@ -65,6 +65,8 @@ This ring is for instance invalid:
 | --- |
 | To ensure that cases such as that below are detected, another requirement is necessary: the distance between every point forming a polygon and all the planes defined by all possible combinaisons of 3 non-colinear points is less than $$\epsilon_1$$. In practice it can be implemented with a triangulation of the polygon (any triangulation): the orientation of the normal of each triangle must not deviate more than than a certain usef-defined tolerance $$\epsilon_2$$ (eg 1 degree).     |
 
+![](figs/planarity_fold.png)
+
 | 205: INTERIOR_DISCONNECTED |
 | --- |
 | If one or more interior rings makes the interior of the polygon disconnected then the polygon is invalid. |
@@ -79,40 +81,42 @@ This ring is for instance invalid:
 
 | 208: ORIENTATION_RINGS_SAME |
 | --- |
-| The interior rings must have the opposite direction (clockwise vs counter-clockwise) when viewed from a given point-of-view. When the polygon is used as a bounding surface of a shell, then the rings have to have a specified orientation (error 307/308) but this requirement is only for opposite orientation.  |
+| The interior rings must have the opposite direction (clockwise vs counterclockwise) when viewed from a given point-of-view. When the polygon is used as a bounding surface of a shell, then the rings have to have a specified orientation (error 307/308) but this requirement is only for opposite orientation.  |
 
 
 # SHELL
 
 | 301 -- TOO_FEW_POLYGONS |
 | --- |
-| <4 polygons |
+| A shell should have at least 4 polygons---the simplest volumetric shape in 3D is a tetrahedron.  |
+
 
 | 302 -- NOT_CLOSED |
 | --- |
-| there is 1+ hole(s) on the surface          |
+| The shell must not have 'holes', ie it must be 'watertight'. This refers only to the topology of the shell, not to its geometry (see error 306) |
+
 
 | 303 -- NON_MANIFOLD_VERTEX |
 | --- |
-| |
+| Each shell must be simple, ie it must be a 2-manifold. A vertex is non-manifold when its incident polygons do not form one `umbrella'|
 
 | 304 -- NON_MANIFOLD_EDGE |
 | --- |
-| |
+| Each edge of a shell should have exactly 2 incident polygons. |
 
 | 305 -- MULTIPLE_CONNECTED_COMPONENTS |
 | --- |
-| 1+ polygons not connected to main shell|
+| Polygons that are not connected to the shell should be reported as an error. |
 
 | 306 -- SELF_INTERSECTION |
 | --- |
-||
+| If topology of the shell is correct and it is closed (thus no error 302/303/304/305), it is possible that the geometry introduces errors, eg intersections. |
 
 | 307 -- POLYGON_WRONG_ORIENTATION |
 | --- |
-| orientation of a polygon not correct|
+| If one polygon is used to construct a shell, its exterior ring must be oriented in such as way that when viewed from outside the shell the points are ordered counterclockwise. |
 
 | 308 -- ALL_POLYGONS_WRONG_ORIENTATION |
 | --- |
-| normals all pointing in wrong direction |
+| If all the polygons have the wrong orientation (as defined in 307). |
 
