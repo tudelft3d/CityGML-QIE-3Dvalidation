@@ -47,6 +47,8 @@ This ring is for instance invalid:
 |:--- |
 | A special case for self-intersection: the ring is collapsed to a line.  | 
 
+![](figs/105.png)
+
 
 # POLYGON
 
@@ -54,35 +56,46 @@ This ring is for instance invalid:
 |:--- |
 | Two or more rings intersect, these can be either the exterior ring with an interior ring or only interior rings.       |
 
+![](figs/201.png)
+
 | 202: DUPLICATED_RINGS |
 |:--- |
 | Two or more rings are identical.  |
 
+
 | 203: NON_PLANAR_POLYGON_DISTANCE_PLANE |
 |:--- |
-| A polygon must be planar, ie all its points (used for both the exterior and interior rings) must lie on a plane. To verify this, the distance between every point forming a polygon and a plane is less than $$\epsilon_1$$, a given *tolerance* (eg 1cm). This plane should be a plane fitted with least-square adjustment. |
+| A polygon must be planar, ie all its points (used for both the exterior and interior rings) must lie on a plane. To verify this, we must ensure that the the distance between every point and a plane is less than $$\epsilon_1$$, a given *tolerance* (eg 1cm). This plane should be a plane fitted with least-square adjustment. |
 
 | 204: NON_PLANAR_POLYGON_NORMALS_DEVIATION |
 |:--- |
-| To ensure that cases such as that below are detected, another requirement is necessary: the distance between every point forming a polygon and all the planes defined by all possible combinaisons of 3 non-colinear points is less than $$\epsilon_1$$. In practice it can be implemented with a triangulation of the polygon (any triangulation): the orientation of the normal of each triangle must not deviate more than than a certain usef-defined tolerance $$\epsilon_2$$ (eg 1 degree).     |
+| To ensure that cases such as that below are detected (the top polygon is clearly non-planar, but would not be detected with 203 and a tolerance of 1cm for instance) , another requirement is necessary: the distance between every point forming a polygon and *all* the planes defined by all possible combinaisons of 3 non-colinear points is less than $$\epsilon_1$$. In practice it can be implemented with a triangulation of the polygon (any triangulation): the orientation of the normal of each triangle must not deviate more than than a certain usef-defined tolerance $$\epsilon_2$$ (eg 1 degree).     |
 
 ![](figs/204.png)
 
 | 205: INTERIOR_DISCONNECTED |
 |:--- |
-| If one or more interior rings makes the interior of the polygon disconnected then the polygon is invalid. |
+| The interior of a polygon must be connected. The combinaison of different valid rings can create such an error, see one example: |
+
+![](figs/205.png)
 
 | 206: HOLE_OUTSIDE |
 |:--- |
 | One or more interior ring(s) is(are) located completely outside the exterior ring. If the interior ring intersects the exterior ring, then error 201 should be returned. |
 
+![](figs/206.png)
+
 | 207: INNER_RINGS_NESTED |
 |:--- |
 | One or more interior ring(s) is(are) located completely inside another interior ring. |
 
+![](figs/207.png)
+
 | 208: ORIENTATION_RINGS_SAME |
 |:--- |
-| The interior rings must have the opposite direction (clockwise vs counterclockwise) when viewed from a given point-of-view. When the polygon is used as a bounding surface of a shell, then the rings have to have a specified orientation (error 307/308) but this requirement is only for opposite orientation.  |
+| The interior rings must have the opposite direction (clockwise vs counterclockwise) when viewed from a given point-of-view. When the polygon is used as a bounding surface of a shell, then the rings have to have a specified orientation (see 307/308). |
+
+![](figs/208.png)
 
 
 # SHELL
