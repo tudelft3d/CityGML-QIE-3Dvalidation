@@ -1,0 +1,14 @@
+I analysed the results quickly, some comments:
+
+- your implementation doesn’t support inner rings. That
+means that a lot of the errors you returned are wrong, there’s just a
+"cascading effect" that caused the solid to be returned wrong but what
+you return is no what should be returned. All the i20x_x.gml are wrong, these are to test the inner rings.
+- i204_x.gml are wrong: are you testing the planarity or is it because of inner rings?
+- i305_x.gml is wrong: there are more than one solid not connected. 
+- i306_x.gml: you return errors for 2D polygons, while the intersections should be for the Shell
+- i308_x.gml: orientation of your surfaces not verified? it seems so.
+- t302_x.gml: what tolerances did you use? the "t" means that it's testing tolerances, in this case for the snapping of the input GML coordinates.
+- all the vXXX.gml that are invalid are wrong. I assume that this is cause by the fact that inner rings are not handled correctly.
+
+Hugo
