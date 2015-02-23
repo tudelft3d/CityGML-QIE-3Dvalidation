@@ -53,7 +53,7 @@ This ring is for instance invalid:
 
 ![](figs/104.png)
 
-| 105 -- GE_R_COLLAPSED |
+| 105 -- GE_R_COLLAPSED_TO_LINE |
 |:--- |
 | A special case of self-intersection (104): the ring is collapsed to a line. If the geometry is collapsed to a point, then 101/102 should be used. | 
 
