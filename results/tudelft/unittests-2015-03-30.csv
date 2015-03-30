@@ -1,0 +1,57 @@
+name;is_valid;error;info
+i101_1.gml;no;101;shell=1 face=1
+i102_1.gml;no;102;shell=1 face=3
+i103_1.gml;no;103;shell=1 face=1
+i104_1.gml;no;104;shell=1 face=1  outer ring self-intersects or is collapsed to a point or a line
+i104_2.gml;no;104;shell=1 face=1  outer ring self-intersects or is collapsed to a point or a line
+i105_1.gml;no;104;shell=1 face=1 Inner ring self-intersects or is collapsed to a point or a line
+i201_1.gml;no;201;shell=1 face=1 Self-intersection[0.7 0.3]
+i202_1.gml;no;202;shell=1 face=1 Duplicate Rings[0.5 0.5]
+i204_1.gml;no;204;shell=1 face=2 deviation normals: 48.2924 (tolerance=1)
+i204_2.gml;no;104;shell=1 face=2  outer ring self-intersects or is collapsed to a point or a line
+i205_1.gml;no;205;shell=1 face=1 Interior is disconnected[0 0]
+i206_1.gml;no;206;shell=1 face=5 Hole lies outside shell[1.2 1.2]
+i207_1.gml;no;207;shell=1 face=1 Holes are nested[0.5 0.4]
+i208_1.gml;no;208;shell=1 face=1 same orientation for outer and inner rings
+i301_1.gml;no;301;shell=1 face=-1
+i301_2.gml;no;301;shell=1 face=-1
+i302_1.gml;no;302;shell=1 face=-1 Location hole: 0 0 0
+i302_2.gml;no;302;shell=1 face=-1 Location hole: 0.2 0.8 1
+i303_1.gml;no;304;shell=1 face=7
+i303_2.gml;no;304;shell=1 face=6
+i303_3.gml;no;304;shell=1 shell=1 shell=1 shell=1 shell=1 shell=1 face=7 face=7 face=10 face=10 face=12 face=12
+i304_1.gml;no;302;shell=1 face=-1 Location hole: 1 0 1
+i304_2.gml;no;304;shell=1 shell=1 face=7 face=7
+i305_1.gml;no;305;shell=1 face=-1
+i305_2.gml;no;305;shell=1 face=-1 More than one connected components.
+i306_1.gml;no;306;shell=1 face=-1 Point intersection: 0.250.250
+
+i306_2.gml;no;306;shell=1 face=-1 Point intersection: 0.50.50
+
+i306_3.gml;no;305;shell=1 face=-1
+i306_4.gml;no;306;shell=1 face=-1 Segment intersection: 10.50.5
+
+i307_1.gml;no;307-304;shell=1 shell=1 shell=1 shell=1 face=3 face=4 face=5 face=6
+i308_1.gml;no;308;shell=1 face=-1
+i308_2.gml;no;308;shell=1 face=-1
+t203_1.gml;no;203;shell=1 face=2 distance to fitted plane: 0.0250001 (tolerance=0.01)
+t203_2.gml;yes;;
+t203_3.gml;yes;;
+t203_4.gml;yes;;
+t203_5.gml;no;204;shell=1 face=12 deviation normals: 2.2344 (tolerance=1)
+t302_1.gml;no;302;shell=1 face=-1 Location hole: 0 1.1 1
+t302_2.gml;no;302;shell=1 face=-1 Location hole: 0 1.01 1
+t302_3.gml;yes;;
+v001.gml;yes;;
+v002.gml;yes;;
+v003.gml;yes;;
+v004.gml;yes;;
+v005.gml;yes;;
+v006.gml;yes;;
+v007.gml;yes;;
+v008.gml;yes;;
+v009.gml;yes;;
+v011.gml;yes;;
+v012.gml;yes;;
+v013.gml;yes;;
+v014.gml;yes;;
